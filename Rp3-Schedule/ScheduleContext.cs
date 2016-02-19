@@ -6,14 +6,11 @@ using System.Text;
 
 namespace Rp3_Schedule
 {
-
-    class ScheduleContext : DbContext
+	class ScheduleContext : DbContext
     {
 
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Professor> Professors { get; set; }
         public ScheduleContext() : base() { }
-
-
-    }
+	}
 }
