@@ -27,7 +27,7 @@ namespace Rp3_Schedule
 				};
 				ctx.Professors.Add (prof);
 				ctx.SaveChanges ();
-				var len = ctx.Professors.ToArray ()[0];
+				var len = ctx.Professors.ToArray ().Length;
 				Debug.WriteLine (len);
 			}
         }
