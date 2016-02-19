@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Rp3_Schedule
 {
+	[Table("classroom_timeslot")]
     class ClassroomTimeRestriction
     {
-        [Column(Order = 0), Key]
+		[Column("timeslot_id", Order=1), Key]
         public int TimeslotId { get; set; }
-        [Column(Order = 1), Key]
+		[Column("classroom_id", Order=2), Key]
         public int ClassroomId { get; set; }
 
         public virtual Timeslot Timeslot { get; set; }

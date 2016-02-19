@@ -4,15 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rp3_Schedule
 {
+	[Table("timeslot")]
     class Timeslot
     {
-        [Key]
+		[Key, Column("id")]
         public int Id { get; set; }
+		[Column("from")]
         public int From { get; set; }
+		[Column("to")]
         public int To { get; set; }
+		[Column("day")]
         public String Day { get; set; }
 
         private readonly ObservableListSource<ClassroomTimeRestriction> _ClassroomRestrictions =

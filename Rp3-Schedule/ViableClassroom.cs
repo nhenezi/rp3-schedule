@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Rp3_Schedule
 {
+	[Table("viable_classroom")]
     class ViableClassroom
     {
-        [Column(Order = 0), Key]
+		[Column("course_id", Order=1), Key]
         public int CourseId { get; set; }
-        [Column(Order = 1), Key]
+		[Column("classroom_id", Order=21), Key]
         public int ClassroomId { get; set; }
 
         public virtual Course Course { get; set; }

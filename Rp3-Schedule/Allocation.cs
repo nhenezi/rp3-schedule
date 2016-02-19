@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace Rp3_Schedule
 {
+	[Table("allocation")]
     class Allocation
     {
-
-        [Column(Order = 0), Key]
+		[Column("gcp_id", Order=1), Key]
         public int GCPId { get; set; }
-        [Column(Order = 1), Key]
+		[Column("classroom_id", Order=2), Key]
         public int ClassroomId { get; set; }
-        [Column(Order = 2), Key]
+		[Column("schedule_id", Order=3), Key]
         public int ScheduleId { get; set; }
+		[Column("timeslot_id", Order=4), Key]
         public int TimeslotId { get; set; }
 
         public virtual GroupCourseProfessor GroupCourseProfessor { get; set; }

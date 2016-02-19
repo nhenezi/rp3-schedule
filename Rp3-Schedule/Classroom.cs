@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace Rp3_Schedule
 {
+	[Table("classroom")]
     class Classroom
     {
-        [Key]
+		[Key, Column("id")]
         public int Id { get; set; }
+		[Column("name")]
         public String Name { get; set; }
+		[Column("capacity")]
         public int Capacity { get; set; }
 
         private readonly ObservableListSource<ViableClassroom> _ViableCourses =
