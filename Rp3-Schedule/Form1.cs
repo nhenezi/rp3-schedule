@@ -20,14 +20,14 @@ namespace Rp3_Schedule
 
         private void Form1_Load(object sender, EventArgs e)
         {
-			//testProfessor ();
+			testProfessor ();
         }
-
+        
 		private void testProfessor() {
 		using (var ctx = new ScheduleContext ()) {
 			var prof = new Professor {
-				Id = 1,
-				Name = "adsd"
+				Id = 2,
+				Name = "gea"
 			};
 			ctx.Professors.Add (prof);
 			ctx.SaveChanges ();
@@ -35,5 +35,39 @@ namespace Rp3_Schedule
 		  }
 		}
 
+        private void scheduleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var viewForm = new ProfessorView();
+            viewForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var viewForm = new CourseView();
+            viewForm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var viewForm = new GroupView();
+            viewForm.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var viewForm = new ClassroomView();
+            viewForm.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var viewForm = new TimeslotsView();
+            viewForm.Show();
+        }
     }
 }
