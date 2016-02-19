@@ -31,31 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mono.Security.3.2.3.0\lib\net45\Mono.Security.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -74,31 +50,19 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.99.0\lib\net451\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.99.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.EF6">
-      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.99.0\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
-    </Reference>
     <Reference Include="Npgsql">
-      <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Npgsql.dll</HintPath>
+      <HintPath>..\packages\Npgsql.3.0.5\lib\net45\Npgsql.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql.EntityFramework">
-      <HintPath>..\packages\Npgsql.EntityFramework.2.2.7\lib\net45\Npgsql.EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework6.Npgsql">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.0.5\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\packages\Mono.Security.3.2.3.0\lib\net45\Mono.Security.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Allocation.cs" />
     <Compile Include="Classroom.cs" />
-    <Compile Include="ClassroomACD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ClassroomACD.Designer.cs">
-      <DependentUpon>ClassroomACD.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClassroomTimeRestriction.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Form1.cs">
@@ -116,45 +80,18 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Professor.cs" />
-    <Compile Include="ProfessorACD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProfessorACD.Designer.cs">
-      <DependentUpon>ProfessorACD.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProfessorTimeRestriction.cs" />
-    <Compile Include="ProfessorView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProfessorView.Designer.cs">
-      <DependentUpon>ProfessorView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleContext.cs" />
     <Compile Include="Timeslot.cs" />
-    <Compile Include="TimeslotACD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TimeslotACD.Designer.cs">
-      <DependentUpon>TimeslotACD.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViableClassroom.cs" />
-    <EmbeddedResource Include="ClassroomACD.resx">
-      <DependentUpon>ClassroomACD.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602161912553_InitialMigration.resx">
       <DependentUpon>201602161912553_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProfessorACD.resx">
-      <DependentUpon>ProfessorACD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProfessorView.resx">
-      <DependentUpon>ProfessorView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -164,11 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TimeslotACD.resx">
-      <DependentUpon>TimeslotACD.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,21 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MiniCLass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MiniCourses.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\miniProf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MiniStudent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MiniTime.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />
