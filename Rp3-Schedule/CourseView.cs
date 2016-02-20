@@ -21,5 +21,17 @@ namespace Rp3_Schedule
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ACDform = new CourseACD();
+            ACDform.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var ACDform = new CourseACD();
+            ACDform.Show();
+        }
     }
 }

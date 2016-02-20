@@ -63,6 +63,12 @@
   <ItemGroup>
     <Compile Include="Allocation.cs" />
     <Compile Include="Classroom.cs" />
+    <Compile Include="ClassroomACD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassroomACD.Designer.cs">
+      <DependentUpon>ClassroomACD.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClassroomTimeRestriction.cs" />
     <Compile Include="ClassroomView.cs">
       <SubType>Form</SubType>
@@ -71,6 +77,12 @@
       <DependentUpon>ClassroomView.cs</DependentUpon>
     </Compile>
     <Compile Include="Course.cs" />
+    <Compile Include="CourseACD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourseACD.Designer.cs">
+      <DependentUpon>CourseACD.cs</DependentUpon>
+    </Compile>
     <Compile Include="CourseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Group.cs" />
+    <Compile Include="GroupACD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupACD.Designer.cs">
+      <DependentUpon>GroupACD.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupCourseProfessor.cs" />
     <Compile Include="GroupView.cs">
       <SubType>Form</SubType>
@@ -98,6 +116,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Professor.cs" />
+    <Compile Include="ProfessorACD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfessorACD.Designer.cs">
+      <DependentUpon>ProfessorACD.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProfessorTimeRestriction.cs" />
     <Compile Include="ProfessorView.cs">
       <SubType>Form</SubType>
@@ -110,6 +134,12 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleContext.cs" />
     <Compile Include="Timeslot.cs" />
+    <Compile Include="TimeslotACD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeslotACD.Designer.cs">
+      <DependentUpon>TimeslotACD.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimeslotsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,8 +147,14 @@
       <DependentUpon>TimeslotsView.cs</DependentUpon>
     </Compile>
     <Compile Include="ViableClassroom.cs" />
+    <EmbeddedResource Include="ClassroomACD.resx">
+      <DependentUpon>ClassroomACD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClassroomView.resx">
       <DependentUpon>ClassroomView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseACD.resx">
+      <DependentUpon>CourseACD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CourseView.resx">
       <DependentUpon>CourseView.cs</DependentUpon>
@@ -126,11 +162,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GroupACD.resx">
+      <DependentUpon>GroupACD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupView.resx">
       <DependentUpon>GroupView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602161912553_InitialMigration.resx">
       <DependentUpon>201602161912553_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfessorACD.resx">
+      <DependentUpon>ProfessorACD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfessorView.resx">
       <DependentUpon>ProfessorView.cs</DependentUpon>
@@ -145,6 +187,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TimeslotACD.resx">
+      <DependentUpon>TimeslotACD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimeslotsView.resx">
       <DependentUpon>TimeslotsView.cs</DependentUpon>
     </EmbeddedResource>

@@ -16,5 +16,17 @@ namespace Rp3_Schedule
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ACDform = new GroupACD();
+            ACDform.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var ACDform = new GroupACD();
+            ACDform.Show();
+        }
     }
 }
