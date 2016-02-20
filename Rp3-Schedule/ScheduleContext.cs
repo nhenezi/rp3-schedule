@@ -13,7 +13,11 @@ namespace Rp3_Schedule
 
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Professor> Professors { get; set; }
-		public ScheduleContext() : base("Schedule") { }
+        public DbSet<Classroom> Classrooms { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Timeslot> Timeslots { get; set; }
+        public ScheduleContext() : base("Schedule") { }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
