@@ -26,7 +26,6 @@ namespace Rp3_Schedule
 		private void testProfessor() {
 		using (var ctx = new ScheduleContext ()) {
 			var prof = new Professor {
-				Id = 1,
 				Name = "adsd"
 			};
 			ctx.Professors.Add (prof);

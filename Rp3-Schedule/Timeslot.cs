@@ -11,7 +11,7 @@ namespace Rp3_Schedule
 	[Table("timeslot")]
     class Timeslot
     {
-		[Key, Column("id")]
+        [Key][Column("id")][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 		[Column("from")]
         public int From { get; set; }
