@@ -11,7 +11,7 @@ namespace Rp3_Schedule
 	[Table("professor")]
     class Professor
     {
-		[Key][Column("id")]
+        [Key][Column("id")][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 		[Column("name")]
         public String Name { get; set; }

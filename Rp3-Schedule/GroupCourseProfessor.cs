@@ -12,8 +12,8 @@ namespace Rp3_Schedule
     class GroupCourseProfessor
     {
 
-		[Column("id"), Key]
-		public int Id { get; set; }
+        [Key][Column("id")][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
         [Column("group_id")]
         public int GroupId { get; set; }
         [Column("course_id")]

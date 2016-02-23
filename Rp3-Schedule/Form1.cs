@@ -22,12 +22,11 @@ namespace Rp3_Schedule
         {
 			testProfessor ();
         }
-        
+
 		private void testProfessor() {
 		using (var ctx = new ScheduleContext ()) {
 			var prof = new Professor {
-				Id = 2,
-				Name = "gea"
+				Name = "adsd"
 			};
 			ctx.Professors.Add (prof);
 			ctx.SaveChanges ();

@@ -8,10 +8,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rp3_Schedule
 {
-	[Table("schedule")]
+    [Table("schedule")]
     class Schedule
     {
-		[Key, Column("id")]
+        [Key, Column("id")][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 		[Column("name")]
         public String Name { get; set; }
