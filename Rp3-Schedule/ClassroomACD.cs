@@ -36,8 +36,6 @@ namespace Rp3_Schedule
                 {
                     var classroom = new Classroom
                     {
-                        //Podesi ID na automatski increase
-                        Id = 2,
                         Name = textBox2.Text.ToString(),
                         Capacity = Convert.ToInt32(textBox3.Text.ToString())
                     };
@@ -53,7 +51,6 @@ namespace Rp3_Schedule
                         var restriction = new ClassroomTimeRestriction
                         {
                             TimeslotId = Int32.Parse(r),
-                            ClassroomId = 2,  //popraviti, AUTOMATSKI INCREASE POSTAVLJEN IZNAD
                         };
                         ctx.ClassroomTimeRestrictions.Add(restriction);
                         ctx.SaveChanges();
@@ -66,10 +63,11 @@ namespace Rp3_Schedule
         {
             using (var ACDRestriction = new TimeslotsView(true))
             {
-                this.Hide();
-                ACDRestriction.ShowDialog();
-                restrictions = ACDRestriction.GetRestrictions();
-                this.Show();
+                var result = ACDRestriction.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    restrictions = ACDRestriction.restrictions;
+                }
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Rp3_Schedule
 {
     public partial class GroupView : Form
     {
+        ScheduleContext _context;
         public GroupView()
         {
             InitializeComponent();
@@ -30,6 +32,14 @@ namespace Rp3_Schedule
         }
 
         private void GroupView_Load(object sender, EventArgs e)
+        {
+            _context = new ScheduleContext();
+            _context.Groups.Load();
+            this.groupBindingSource.DataSource =
+                _context.Groups.Local.ToBindingList();
+        }
+
+        private void groupDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

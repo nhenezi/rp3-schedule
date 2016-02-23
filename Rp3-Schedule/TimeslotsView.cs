@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace Rp3_Schedule
 {
     public partial class TimeslotsView : Form
     {
-        
+        ScheduleContext _context;
+        public List<string> restrictions { get; set; }
         public TimeslotsView(Boolean option)
         {
             InitializeComponent();
@@ -41,9 +43,9 @@ namespace Rp3_Schedule
             ACDform.Show();
         }
 
-        public List<string> GetRestrictions()
+        private void button4_Click(object sender, EventArgs e)
         {
-            var restrictions = new List<string>();
+
             foreach (DataRowView rowView in timeslotDataGridView.SelectedRows)
             {
                 if (rowView != null)
@@ -52,18 +54,16 @@ namespace Rp3_Schedule
                     restrictions.Add(row.ItemArray[0].ToString());
                 }
             }
-            return restrictions;
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-            //For example - Returning to the ProfessorACD form after adding restricitons.
             this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void TimeslotsView_Load(object sender, EventArgs e)
         {
-
+            _context = new ScheduleContext();
+            _context.Timeslots.Load();
+            this.timeslotBindingSource.DataSource =
+                _context.Timeslots.Local.ToBindingList();
         }
     }
 }

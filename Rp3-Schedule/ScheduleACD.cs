@@ -29,8 +29,6 @@ namespace Rp3_Schedule
                 {
                     var schedule = new Schedule
                     {
-                        // Podesi input, automatski increase ID
-                        Id = 2,
                         Name = textBox2.Text.ToString(),
                     };
 

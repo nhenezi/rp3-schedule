@@ -31,7 +31,6 @@ namespace Rp3_Schedule
                     var prof = new Professor
                     {
                         // Podesi input, automatski increase ID
-                        Id = 2,
                         Name = textBox2.Text.ToString(),
                     };
                     
@@ -44,13 +43,12 @@ namespace Rp3_Schedule
                     {
                         var restriction = new ProfessorTimeRestriction
                         {
+                            ProfessorId = prof.Id,
                             TimeslotId = Int32.Parse(r),
-                            ProfessorId = 2,  //popraviti, AUTOMATSKI INCREASE POSTAVLJEN IZNAD
                         };
                         ctx.ProfessorTimeRestrictions.Add(restriction);
                         ctx.SaveChanges();
                     }
-
                     this.Close();
                 }
             }
@@ -70,10 +68,11 @@ namespace Rp3_Schedule
         {
             using (var ACDRestriction = new TimeslotsView(true))
             {
-                this.Hide();
-                ACDRestriction.ShowDialog();
-                restrictions = ACDRestriction.GetRestrictions();
-                this.Show();
+                var result = ACDRestriction.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    restrictions = ACDRestriction.restrictions;
+                }
             }
         }
     }

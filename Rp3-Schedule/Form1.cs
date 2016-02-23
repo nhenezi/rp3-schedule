@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Data.Entity;
 
 namespace Rp3_Schedule
 {
     public partial class Form1 : Form
     {
+        ScheduleContext _context;
         public Form1()
         {
             InitializeComponent();
@@ -20,19 +22,12 @@ namespace Rp3_Schedule
 
         private void Form1_Load(object sender, EventArgs e)
         {
-			testProfessor ();
-        }
 
-		private void testProfessor() {
-		using (var ctx = new ScheduleContext ()) {
-			var prof = new Professor {
-				Name = "adsd"
-			};
-			ctx.Professors.Add (prof);
-			ctx.SaveChanges ();
-			var len = ctx.Professors.ToArray ().Length;
-		  }
-		}
+            _context = new ScheduleContext();
+            _context.Schedules.Load();
+            this.scheduleBindingSource.DataSource =
+                _context.Classrooms.Local.ToBindingList();
+        }
 
         private void scheduleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Rp3_Schedule
 {
     public partial class ProfessorView : Form
     {
+        ScheduleContext _context;
         public ProfessorView()
         {
             InitializeComponent();
@@ -28,5 +30,15 @@ namespace Rp3_Schedule
             var ACDform = new ProfessorACD();
             ACDform.Show();
         }
+
+        private void ProfessorView_Load(object sender, EventArgs e)
+        {
+            _context = new ScheduleContext();
+            _context.Professors.Load();
+            this.professorBindingSource.DataSource =
+                _context.Professors.Local.ToBindingList();
+        }
+
+        
     }
 }

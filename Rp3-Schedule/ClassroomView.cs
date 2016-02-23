@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Rp3_Schedule
 {
     public partial class ClassroomView : Form
     {
+        ScheduleContext _context;
         public ClassroomView()
         {
             InitializeComponent();
@@ -27,6 +29,19 @@ namespace Rp3_Schedule
         {
             var ACDform = new ClassroomACD();
             ACDform.Show();
+        }
+
+        private void ClassroomView_Load(object sender, EventArgs e)
+        {
+            _context = new ScheduleContext();
+            _context.Classrooms.Load();
+            this.classroomBindingSource.DataSource =
+                _context.Classrooms.Local.ToBindingList();
+        }
+
+        private void classroomBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
         }
     }
 }

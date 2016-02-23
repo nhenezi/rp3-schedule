@@ -30,8 +30,6 @@ namespace Rp3_Schedule
                 {
                     var course = new Course
                     {
-                        //Podesi ID na automatski increase
-                        Id = 2,
                         Name = textBox2.Text.ToString(),      
                     };
  

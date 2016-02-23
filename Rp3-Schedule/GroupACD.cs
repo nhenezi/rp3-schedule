@@ -36,8 +36,6 @@ namespace Rp3_Schedule
                 {
                     var group = new Group
                     {
-                        //Podesiti ID na automatski increase
-                        Id = 2,
                         Name = textBox2.Text.ToString(),
                         Members = Convert.ToInt32(textBox3.Text.ToString()),
                         //Podesiti na odabir iz combo boxa:
