@@ -13,6 +13,7 @@ namespace Rp3_Schedule
 {
     public partial class ClassroomACD : Form
     {
+        public List<string> restrictions = new List<string>();
         public ClassroomACD()
         {
             InitializeComponent();
@@ -40,13 +41,35 @@ namespace Rp3_Schedule
                         Name = textBox2.Text.ToString(),
                         Capacity = Convert.ToInt32(textBox3.Text.ToString())
                     };
-
-                    // MISSING : Addaj odabrane restrikcije !!!!
                     ctx.Classrooms.Add(classroom);
                     ctx.SaveChanges();
                     var len = ctx.Classrooms.ToArray().Length;
                     this.Close();
+
+                    //Adding ClassroomTimeRestriction
+
+                    foreach (var r in restrictions)
+                    {
+                        var restriction = new ClassroomTimeRestriction
+                        {
+                            TimeslotId = Int32.Parse(r),
+                            ClassroomId = 2,  //popraviti, AUTOMATSKI INCREASE POSTAVLJEN IZNAD
+                        };
+                        ctx.ClassroomTimeRestrictions.Add(restriction);
+                        ctx.SaveChanges();
+                    }
                 }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var ACDRestriction = new TimeslotsView(true))
+            {
+                this.Hide();
+                ACDRestriction.ShowDialog();
+                restrictions = ACDRestriction.GetRestrictions();
+                this.Show();
             }
         }
     }

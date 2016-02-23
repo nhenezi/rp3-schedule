@@ -28,5 +28,10 @@ namespace Rp3_Schedule
             var ACDform = new GroupACD();
             ACDform.Show();
         }
+
+        private void GroupView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

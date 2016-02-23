@@ -66,8 +66,22 @@ namespace Rp3_Schedule
 
         private void button5_Click(object sender, EventArgs e)
         {
-            var viewForm = new TimeslotsView();
+            var viewForm = new TimeslotsView(false);
             viewForm.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //Add schedule
+            var ACDform = new ScheduleACD();
+            ACDform.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //Change schedule
+            var ACDform = new ProfessorACD();
+            ACDform.Show();
         }
     }
 }

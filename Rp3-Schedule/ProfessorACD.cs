@@ -12,6 +12,7 @@ namespace Rp3_Schedule
 {
     public partial class ProfessorACD : Form
     {
+        public List<string> restrictions = new List<string>();
         public ProfessorACD()
         {
             InitializeComponent();
@@ -33,11 +34,23 @@ namespace Rp3_Schedule
                         Id = 2,
                         Name = textBox2.Text.ToString(),
                     };
-
-                    // MISSING : Addaj odabrane restrikcije !!!!
+                    
                     ctx.Professors.Add(prof);
                     ctx.SaveChanges();
-                    var len = ctx.Professors.ToArray().Length;
+
+                    //Adding ProfessorTimeRestriction
+
+                    foreach (var r in restrictions)
+                    {
+                        var restriction = new ProfessorTimeRestriction
+                        {
+                            TimeslotId = Int32.Parse(r),
+                            ProfessorId = 2,  //popraviti, AUTOMATSKI INCREASE POSTAVLJEN IZNAD
+                        };
+                        ctx.ProfessorTimeRestrictions.Add(restriction);
+                        ctx.SaveChanges();
+                    }
+
                     this.Close();
                 }
             }
@@ -45,7 +58,23 @@ namespace Rp3_Schedule
 
         private void ProfessorACD_Load(object sender, EventArgs e)
         {
-            //MISSING : Popuni combobox za restrikcije sa svim mogućim timeslotovima !!!!
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var ACDRestriction = new TimeslotsView(true))
+            {
+                this.Hide();
+                ACDRestriction.ShowDialog();
+                restrictions = ACDRestriction.GetRestrictions();
+                this.Show();
+            }
         }
     }
 }

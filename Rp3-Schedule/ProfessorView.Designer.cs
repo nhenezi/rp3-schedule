@@ -187,6 +187,8 @@
             // 
             // professorDataGridView
             // 
+            this.professorDataGridView.AllowUserToAddRows = false;
+            this.professorDataGridView.AllowUserToDeleteRows = false;
             this.professorDataGridView.AutoGenerateColumns = false;
             this.professorDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.professorDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
