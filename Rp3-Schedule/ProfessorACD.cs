@@ -12,7 +12,7 @@ namespace Rp3_Schedule
 {
     public partial class ProfessorACD : Form
     {
-        public List<string> restrictions = new List<string>();
+        public List<int> restrictions = new List<int>();
         public ProfessorACD()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace Rp3_Schedule
                         var restriction = new ProfessorTimeRestriction
                         {
                             ProfessorId = prof.Id,
-                            TimeslotId = Int32.Parse(r),
+                            TimeslotId = r,
                         };
                         ctx.ProfessorTimeRestrictions.Add(restriction);
                         ctx.SaveChanges();

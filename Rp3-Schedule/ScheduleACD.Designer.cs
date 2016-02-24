@@ -72,6 +72,7 @@
             this.Controls.Add(this.label2);
             this.Name = "ScheduleACD";
             this.Text = "ScheduleACD";
+            this.Load += new System.EventHandler(this.ScheduleACD_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,9 +19,17 @@ namespace Rp3_Schedule
             InitializeComponent();
         }
 
+        void RefreshGrid(object sender, FormClosedEventArgs e)
+        {
+            _context.Classrooms.Load();
+            this.classroomBindingSource.DataSource =
+                _context.Classrooms.Local.ToBindingList();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             var ACDform = new ClassroomACD();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
 
@@ -33,6 +41,8 @@ namespace Rp3_Schedule
 
         private void ClassroomView_Load(object sender, EventArgs e)
         {
+            classroomDataGridView.MultiSelect = false;
+            classroomDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _context = new ScheduleContext();
             _context.Classrooms.Load();
             this.classroomBindingSource.DataSource =
@@ -42,6 +52,20 @@ namespace Rp3_Schedule
         private void classroomBindingNavigator_RefreshItems(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in classroomDataGridView.SelectedRows)
+            {
+                Classroom sch = row.DataBoundItem as Classroom;
+                if (sch != null)
+                {
+                    _context.Classrooms.Remove(sch);
+                    _context.SaveChanges();
+
+                }
+            }
         }
     }
 }

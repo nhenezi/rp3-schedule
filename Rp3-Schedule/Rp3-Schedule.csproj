@@ -95,6 +95,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GCP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GCP.Designer.cs">
+      <DependentUpon>GCP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Group.cs" />
     <Compile Include="GroupACD.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,10 @@
       <DependentUpon>ScheduleACD.cs</DependentUpon>
     </Compile>
     <Compile Include="ScheduleContext.cs" />
+    <Compile Include="SchedulePreview.cs" />
+    <Compile Include="SchedulePreview.Designer.cs">
+      <DependentUpon>SchedulePreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Timeslot.cs" />
     <Compile Include="TimeslotACD.cs">
       <SubType>Form</SubType>
@@ -168,6 +178,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GCP.resx">
+      <DependentUpon>GCP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupACD.resx">
       <DependentUpon>GroupACD.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +209,9 @@
     <EmbeddedResource Include="ScheduleACD.resx">
       <DependentUpon>ScheduleACD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SchedulePreview.resx">
+      <DependentUpon>SchedulePreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimeslotACD.resx">
       <DependentUpon>TimeslotACD.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +222,7 @@
     <None Include="Properties\DataSources\Classroom.datasource" />
     <None Include="Properties\DataSources\Course.datasource" />
     <None Include="Properties\DataSources\Group.datasource" />
+    <None Include="Properties\DataSources\GroupCourseProfessor.datasource" />
     <None Include="Properties\DataSources\Professor.datasource" />
     <None Include="Properties\DataSources\Schedule.datasource" />
     <None Include="Properties\DataSources\Timeslot.datasource" />

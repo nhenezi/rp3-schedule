@@ -18,7 +18,7 @@ namespace Rp3_Schedule
 		[Column("members")]
         public int Members { get; set; }
 		[Column("parent_id")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
 
         private readonly ObservableListSource<GroupCourseProfessor> _ProfessorCourses =
                 new ObservableListSource<GroupCourseProfessor>();

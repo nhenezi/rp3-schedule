@@ -14,7 +14,7 @@ namespace Rp3_Schedule
     public partial class TimeslotsView : Form
     {
         ScheduleContext _context;
-        public List<string> restrictions { get; set; }
+        public List<int> restrictions { get; set; }
         public TimeslotsView(Boolean option)
         {
             InitializeComponent();
@@ -25,15 +25,22 @@ namespace Rp3_Schedule
             }
             else
             {
-                
+                restrictions = new List<int>();
                 button4.Visible = true;
                 timeslotDataGridView.MultiSelect = true;
+                timeslotDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
         }
-
+        void RefreshGrid(object sender, FormClosedEventArgs e)
+        {
+            _context.Timeslots.Load();
+            this.timeslotBindingSource.DataSource =
+                _context.Timeslots.Local.ToBindingList();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             var ACDform = new TimeslotACD();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
 
@@ -46,12 +53,14 @@ namespace Rp3_Schedule
         private void button4_Click(object sender, EventArgs e)
         {
 
-            foreach (DataRowView rowView in timeslotDataGridView.SelectedRows)
+            foreach (DataGridViewRow row in timeslotDataGridView.SelectedRows)
             {
-                if (rowView != null)
+                Timeslot slot = row.DataBoundItem as Timeslot;
+                if (slot != null)
                 {
-                    DataRow row = rowView.Row;
-                    restrictions.Add(row.ItemArray[0].ToString());
+                    Console.Write(slot.ToString());
+                    restrictions.Add(slot.Id);
+
                 }
             }
             this.DialogResult = DialogResult.OK;
@@ -60,10 +69,31 @@ namespace Rp3_Schedule
 
         private void TimeslotsView_Load(object sender, EventArgs e)
         {
+            timeslotDataGridView.MultiSelect = false;
+            timeslotDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _context = new ScheduleContext();
             _context.Timeslots.Load();
             this.timeslotBindingSource.DataSource =
                 _context.Timeslots.Local.ToBindingList();
+        }
+
+        private void timeslotBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in timeslotDataGridView.SelectedRows)
+            {
+                Timeslot sch = row.DataBoundItem as Timeslot;
+                if (sch != null)
+                {
+                    _context.Timeslots.Remove(sch);
+                    _context.SaveChanges();
+
+                }
+            }
         }
     }
 }

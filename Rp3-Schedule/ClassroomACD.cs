@@ -13,7 +13,7 @@ namespace Rp3_Schedule
 {
     public partial class ClassroomACD : Form
     {
-        public List<string> restrictions = new List<string>();
+        public List<int> restrictions = new List<int>();
         public ClassroomACD()
         {
             InitializeComponent();
@@ -23,21 +23,16 @@ namespace Rp3_Schedule
         {
             using (var ctx = new ScheduleContext())
             {
-                bool isNumber = Regex.IsMatch(textBox3.ToString(), @"^\d+$");
                 if (textBox2.Text == "" || textBox3.Text == "")
                 {
                     MessageBox.Show("Missing required input.", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (!isNumber)
-                {
-                    MessageBox.Show("Capacity should be a number.", "Type error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     var classroom = new Classroom
                     {
                         Name = textBox2.Text.ToString(),
-                        Capacity = Convert.ToInt32(textBox3.Text.ToString())
+                        Capacity = Convert.ToInt32(textBox3.Text)
                     };
                     ctx.Classrooms.Add(classroom);
                     ctx.SaveChanges();
@@ -50,7 +45,7 @@ namespace Rp3_Schedule
                     {
                         var restriction = new ClassroomTimeRestriction
                         {
-                            TimeslotId = Int32.Parse(r),
+                            TimeslotId = r,
                         };
                         ctx.ClassroomTimeRestrictions.Add(restriction);
                         ctx.SaveChanges();

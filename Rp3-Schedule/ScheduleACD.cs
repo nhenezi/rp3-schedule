@@ -14,7 +14,7 @@ namespace Rp3_Schedule
     {
         public ScheduleACD()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +38,11 @@ namespace Rp3_Schedule
                     this.Close();
                 }
             }
+        }
+
+        private void ScheduleACD_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

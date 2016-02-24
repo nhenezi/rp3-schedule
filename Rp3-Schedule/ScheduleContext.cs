@@ -19,6 +19,8 @@ namespace Rp3_Schedule
         public DbSet<Timeslot> Timeslots { get; set; }
         public DbSet<ProfessorTimeRestriction> ProfessorTimeRestrictions { get; set; }
         public DbSet<ClassroomTimeRestriction> ClassroomTimeRestrictions { get; set; }
+        public DbSet<GroupCourseProfessor> GroupCourseProfessors { get; set; }
+        public DbSet<Allocation> Allocations { get; set; }
         public ScheduleContext() : base("Schedule") { }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

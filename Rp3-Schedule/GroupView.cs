@@ -19,9 +19,16 @@ namespace Rp3_Schedule
             InitializeComponent();
         }
 
+        void RefreshGrid(object sender, FormClosedEventArgs e)
+        {
+            _context.Groups.Load();
+            this.groupBindingSource.DataSource =
+                _context.Groups.Local.ToBindingList();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             var ACDform = new GroupACD();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
 
@@ -33,6 +40,8 @@ namespace Rp3_Schedule
 
         private void GroupView_Load(object sender, EventArgs e)
         {
+            groupDataGridView.MultiSelect = false;
+            groupDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _context = new ScheduleContext();
             _context.Groups.Load();
             this.groupBindingSource.DataSource =
@@ -42,6 +51,20 @@ namespace Rp3_Schedule
         private void groupDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in groupDataGridView.SelectedRows)
+            {
+                Group sch = row.DataBoundItem as Group;
+                if (sch != null)
+                {
+                    _context.Groups.Remove(sch);
+                    _context.SaveChanges();
+
+                }
+            }
         }
     }
 }

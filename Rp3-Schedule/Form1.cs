@@ -22,11 +22,12 @@ namespace Rp3_Schedule
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            scheduleDataGridView.MultiSelect = false;
+            scheduleDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _context = new ScheduleContext();
             _context.Schedules.Load();
             this.scheduleBindingSource.DataSource =
-                _context.Classrooms.Local.ToBindingList();
+                _context.Schedules.Local.ToBindingList();
         }
 
         private void scheduleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,17 +65,46 @@ namespace Rp3_Schedule
             viewForm.Show();
         }
 
+        void RefreshGrid(object sender, FormClosedEventArgs e)
+        {
+            _context.Schedules.Load();
+            this.scheduleBindingSource.DataSource =
+                _context.Schedules.Local.ToBindingList();
+        }
+
         private void button8_Click(object sender, EventArgs e)
         {
             //Add schedule
             var ACDform = new ScheduleACD();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
+
         }
+
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //Change schedule
-            var ACDform = new ProfessorACD();
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in scheduleDataGridView.SelectedRows)
+            {
+                Schedule sch = row.DataBoundItem as Schedule;
+                if (sch != null)
+                {
+                    _context.Schedules.Remove(sch);
+                    _context.SaveChanges();
+
+                }
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var ACDform = new GCP();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
     }

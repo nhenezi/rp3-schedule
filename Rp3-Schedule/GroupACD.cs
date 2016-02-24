@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Rp3_Schedule
 {
     public partial class GroupACD : Form
     {
+        ScheduleContext _context;
+
         public GroupACD()
         {
             InitializeComponent();
@@ -23,14 +26,9 @@ namespace Rp3_Schedule
         {
             using (var ctx = new ScheduleContext())
             {
-                bool isNumber = Regex.IsMatch(textBox3.ToString(), @"^\d+$");
                 if (textBox2.Text == "" || textBox3.Text == "")
                 {
                     MessageBox.Show("Missing required input.", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (!isNumber)
-                {
-                    MessageBox.Show("Number of group members should be a number.", "Type error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -38,8 +36,7 @@ namespace Rp3_Schedule
                     {
                         Name = textBox2.Text.ToString(),
                         Members = Convert.ToInt32(textBox3.Text.ToString()),
-                        //Podesiti na odabir iz combo boxa:
-                        ParentId = 3,
+                        ParentId = Convert.ToInt32(comboBox1.SelectedValue),
                     };
 
                     ctx.Groups.Add(group);
@@ -52,7 +49,16 @@ namespace Rp3_Schedule
 
         private void GroupACD_Load(object sender, EventArgs e)
         {
-            //Popuniti ParentID combo box sa svim grupama !!!
+            _context = new ScheduleContext();
+            _context.Groups.Load();
+            comboBox1.DataSource = _context.Groups.ToList();
+            comboBox1.ValueMember = "id";
+            comboBox1.DisplayMember = "name";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

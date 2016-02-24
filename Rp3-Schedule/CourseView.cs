@@ -23,10 +23,16 @@ namespace Rp3_Schedule
         {
 
         }
-
+        void RefreshGrid(object sender, FormClosedEventArgs e)
+        {
+            _context.Courses.Load();
+            this.courseBindingSource.DataSource =
+                _context.Courses.Local.ToBindingList();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             var ACDform = new CourseACD();
+            ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
 
@@ -38,10 +44,31 @@ namespace Rp3_Schedule
 
         private void CourseView_Load(object sender, EventArgs e)
         {
+            courseDataGridView.MultiSelect = false;
+            courseDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _context = new ScheduleContext();
             _context.Courses.Load();
             this.courseBindingSource.DataSource =
                 _context.Courses.Local.ToBindingList();
+        }
+
+        private void courseBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in courseDataGridView.SelectedRows)
+            {
+                Course sch = row.DataBoundItem as Course;
+                if (sch != null)
+                {
+                    _context.Courses.Remove(sch);
+                    _context.SaveChanges();
+
+                }
+            }
         }
     }
 }
