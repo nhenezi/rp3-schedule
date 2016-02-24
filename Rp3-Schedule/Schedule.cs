@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace Rp3_Schedule
 {
@@ -19,5 +20,20 @@ namespace Rp3_Schedule
         private readonly ObservableListSource<Allocation> _Allocations =
                new ObservableListSource<Allocation>();
         public virtual ObservableListSource<Allocation> Allocations { get { return _Allocations; } }
+        public void GenerateSchedule()
+        {
+            var ctx = new ScheduleContext();
+            ctx.GroupCourseProfessors.Load();
+            ctx.Timeslots.Load();
+
+            List<int> timeslots = new List<int>();
+            foreach (Timeslot t in ctx.Timeslots)
+            {
+                timeslots.Add(t.Id);
+            }
+
+
+
+        }
     }
 }

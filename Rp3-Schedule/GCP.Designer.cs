@@ -57,6 +57,7 @@
             this.comboBox1.Size = new System.Drawing.Size(248, 24);
             this.comboBox1.TabIndex = 37;
             this.comboBox1.ValueMember = "Id";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBindingSource
             // 

@@ -81,5 +81,10 @@ namespace Rp3_Schedule
             comboBox3.ValueMember = "id";
             comboBox3.DisplayMember = "name";
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
