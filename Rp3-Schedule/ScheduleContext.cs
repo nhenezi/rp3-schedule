@@ -8,7 +8,17 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Rp3_Schedule
 {
-	class ScheduleContext : DbContext
+    public class Helper
+    {
+        public string Time { get; set; }
+        public string Monday { get; set; }
+        public string Tuesday { get; set; }
+        public string Wednesday { get; set; }
+        public string Thursday { get; set; }
+        public string Friday { get; set; }
+
+    }
+    class ScheduleContext : DbContext
     {
 
         public DbSet<Schedule> Schedules { get; set; }

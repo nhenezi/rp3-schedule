@@ -12,7 +12,7 @@ namespace Rp3_Schedule
     class Allocation
     {
 		[Column("gcp_id", Order=1), Key]
-        public int GCPId { get; set; }
+        public int GroupCourseProfessorId { get; set; }
 		[Column("classroom_id", Order=2), Key]
         public int ClassroomId { get; set; }
 		[Column("schedule_id", Order=3), Key]

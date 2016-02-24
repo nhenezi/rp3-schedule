@@ -35,16 +35,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(853, 515);
+            this.dataGridView1.Size = new System.Drawing.Size(1147, 493);
             this.dataGridView1.TabIndex = 0;
             // 
             // SchedulePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 527);
+            this.ClientSize = new System.Drawing.Size(1171, 517);
             this.Controls.Add(this.dataGridView1);
             this.Name = "SchedulePreview";
             this.Text = "SchedulePreview";

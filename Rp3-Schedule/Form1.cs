@@ -107,5 +107,19 @@ namespace Rp3_Schedule
             ACDform.FormClosed += new FormClosedEventHandler(RefreshGrid);
             ACDform.Show();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in scheduleDataGridView.SelectedRows)
+            {
+                Schedule sch = row.DataBoundItem as Schedule;
+                if (sch != null)
+                {
+                    var prev = new SchedulePreview(sch.Id);
+                    prev.Show();
+
+                }
+            }
+        }
     }
 }

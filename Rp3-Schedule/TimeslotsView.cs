@@ -58,9 +58,7 @@ namespace Rp3_Schedule
                 Timeslot slot = row.DataBoundItem as Timeslot;
                 if (slot != null)
                 {
-                    Console.Write(slot.ToString());
                     restrictions.Add(slot.Id);
-
                 }
             }
             this.DialogResult = DialogResult.OK;
